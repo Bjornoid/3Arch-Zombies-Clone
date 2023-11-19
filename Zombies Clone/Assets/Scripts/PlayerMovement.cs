@@ -4,8 +4,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("----- Components -----")]
+    [SerializeField] CharacterController controller;
+
+    [Header("----- Movement Vars -----")]
+    [SerializeField][Range(7.5f, 15f)] float playerSpeed;
+    [SerializeField][Range(5f, 10f)] float jumpHeight;
+    [SerializeField][Range(9.81f, 25f)]float gravityValue;
+
+
+
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+   
+    
+
+    private void Start()
     {
         
     }

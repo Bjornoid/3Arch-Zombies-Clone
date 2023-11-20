@@ -4,15 +4,47 @@ using UnityEngine;
 
 public class PlayerFPSCamera : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("----- Camera Settings -----")]
+    [SerializeField] float sensitivity;
+    [SerializeField] int lockVerMin;
+    [SerializeField] int lockVerMax;
+    [SerializeField] bool invertY;
+
+    float xRotation;
+
     void Start()
     {
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked; 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // Get Input
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity; 
+
+        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensitivity; 
+
+        if (invertY)
+        {
+            xRotation += mouseY;
+        }
+        else
+        {
+            xRotation -= mouseY;
+        }
+
+        //Clamp the Camera Rotation on the X-Axis (for strafing)
+
+        xRotation = Mathf.Clamp(xRotation, lockVerMin, lockVerMax);
+
+        // Rotate the Camera on X-Axis
+
+        transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+
+        // Rotate the Player on Y-Axis
+
+        transform.parent.Rotate(Vector3.up * mouseX);
+
     }
 }

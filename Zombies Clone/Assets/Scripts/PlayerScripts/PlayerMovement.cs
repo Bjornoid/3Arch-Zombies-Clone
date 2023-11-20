@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("----- Components -----")]
     [SerializeField] CharacterController controller;
 
-    [Header("----- Movement Vars -----")]
+    [Header("----- Movement Stats -----")]
     [SerializeField][Range(7.5f, 15f)] float playerSpeed;
     [SerializeField][Range(5f, 10f)] float jumpHeight;
     [SerializeField][Range(9.81f, 25f)]float gravityValue;

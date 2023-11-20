@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyZombie : MonoBehaviour
+public class EnemyZombie : MonoBehaviour, IDamage
 {
     // Plan to make a state machine of multiple zombie types:
 
@@ -46,11 +46,48 @@ public class EnemyZombie : MonoBehaviour
     {
         // Track the original speed of the zombie (If we want to slow or stun a zombie)
         speedOrig = agent.speed;
+
+
     }
 
 
     void Update()
     {
         
+    }
+
+    void FacePlayer()
+    {
+        Quaternion faceRotation = Quaternion.LookRotation(new Vector3(playerDirection.x, 0f, playerDirection.z));
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, faceRotation, Time.deltaTime * playerFaceSpeed);
+    }
+
+    public void takeDamage(int dmg)
+    {
+        HP -= dmg;
+
+        // Play Zombie Hurt Sound Here
+
+        if (HP <= 0)
+        {
+            StopAllCoroutines();
+
+            // Update that Zombie Dies in the Round Logic Here
+
+            // Set Zombie Animation to False here
+
+            // Stop the zombie agent from moving
+            agent.enabled = false;
+
+            // Disable Damage Colliders
+            GetComponent<CapsuleCollider>().enabled = false;
+        }
+        else
+        {
+            // Allow the zombie to continue to attack the player.
+
+            // Maybe put some indicator for damage? (Flash red, more groan, etc..)
+        }
     }
 }

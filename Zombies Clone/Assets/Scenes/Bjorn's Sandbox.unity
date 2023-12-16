@@ -411,6 +411,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1002841814947031442, guid: 127364de00b32d149adfb3e777d48400, type: 3}
+      propertyPath: m_Name
+      value: playerCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 2649831374003228641, guid: 127364de00b32d149adfb3e777d48400, type: 3}
       propertyPath: m_Name
       value: Player
@@ -454,6 +458,18 @@ PrefabInstance:
     - target: {fileID: 4306259663731916107, guid: 127364de00b32d149adfb3e777d48400, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023220479687771785, guid: 127364de00b32d149adfb3e777d48400, type: 3}
+      propertyPath: lockVerMax
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023220479687771785, guid: 127364de00b32d149adfb3e777d48400, type: 3}
+      propertyPath: lockVerMin
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023220479687771785, guid: 127364de00b32d149adfb3e777d48400, type: 3}
+      propertyPath: sensitivity
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
